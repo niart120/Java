@@ -5,8 +5,19 @@ import java.awt.Point;
 import java.awt.Stroke;
 
 public class PointInfo {
+
+	//現在座標
 	final Point bgn;
+	//目的座標
 	final Point dest;
+
+	//直線の式ax+by+c=0の各定数
+	//ラジアン(傾き)
+	final double a;
+	//定数
+	final double b = -1;
+	//切片
+	final double c;
 
 	final Color penColor;
 	final Stroke penStr;
@@ -23,4 +34,6 @@ public class PointInfo {
 		//ペンサイズの取得
 		penStr = s;
 	}
+
+
 }
