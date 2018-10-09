@@ -49,9 +49,17 @@ class PointInfo {
 
 	//経路中に点が含まれるかの判定
 	boolean isInPoint(int x,int y) {
+		//ペンの幅(半径)
+		double r = penStr.getLineWidth()+1.0;
+		//xが経路の変域(x)に含まれるか(1)
+		boolean isInDomain = (bgn.x-r<=x)&&(x<=dest.x+r);
+		//点と経路の距離d(点と直線の式より算出)
+		double d = Math.abs(a*x+b*y+c)/Math.hypot(a, b);
+		//距離が半径r以内であるか(2)
+		boolean isInRadius = (d<=r);
 
-
-		return true;
+		//(1)かつ(2)を満たすならtrue
+		return isInDomain&&isInRadius;
 	}
 
 	//getter
