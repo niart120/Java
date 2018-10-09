@@ -4,27 +4,27 @@ import java.awt.Color;
 import java.awt.Point;
 import java.awt.Stroke;
 
-public class PointInfo {
+class PointInfo {
 
 	//現在座標
-	final Point bgn;
+	private Point bgn;
 	//目的座標
-	final Point dest;
+	private Point dest;
+
+	private final Color penColor;
+	private final Stroke penStr;
 
 	//直線の式ax+by+c=0の各定数
 	//ラジアン(傾き)
-	final double a;
+	private double a;
 	//定数
-	final double b = -1;
+	private final double b = -1;
 	//切片
-	final double c;
+	private double c;
 
-	final Color penColor;
-	final Stroke penStr;
-
-	PointInfo(int x, int y, double deg, double length, Color col, Stroke s){
+	PointInfo(Point p, double deg, double length, Color col, Stroke s){
 		//現在座標の初期化
-		bgn = new Point(x,y);
+		bgn = new Point(p);
 
 		//degree -> radian
 		double rad = Math.toRadians(deg);
@@ -34,16 +34,33 @@ public class PointInfo {
 		int dy = (int)(Math.sin(rad)*length);
 
 		//目的座標の初期化
-		dest = new Point(x+dx,y+dy);
+		dest = new Point(p.x+dx,p.y+dy);
 
 		//a,cの初期化
 		a = Math.tan(rad);
-		c = y - a*x;
+		c = p.y - a*p.x;
 
 		//ペンカラーの取得
 		penColor = col;
 
 		//ペンサイズの取得
 		penStr = s;
+	}
+
+	//getter
+	Point getBgn() {
+		return bgn;
+	}
+
+	Point getDest() {
+		return dest;
+	}
+
+	Color getPenColor() {
+		return penColor;
+	}
+
+	Stroke getPenStr() {
+		return penStr;
 	}
 }
