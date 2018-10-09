@@ -22,18 +22,28 @@ public class PointInfo {
 	final Color penColor;
 	final Stroke penStr;
 
-	PointInfo(int x1, int y1, int x2, int y2, Color c, Stroke s){
+	PointInfo(int x, int y, double deg, double length, Color col, Stroke s){
 		//現在座標の初期化
-		bgn = new Point(x1,y1);
+		bgn = new Point(x,y);
+
+		//degree -> radian
+		double rad = Math.toRadians(deg);
+
+		//移動距離
+		int dx = (int)(Math.cos(rad)*length);
+		int dy = (int)(Math.sin(rad)*length);
+
 		//目的座標の初期化
-		dest = new Point(x2,y2);
+		dest = new Point(x+dx,y+dy);
+
+		//a,cの初期化
+		a = Math.tan(rad);
+		c = y - a*x;
 
 		//ペンカラーの取得
-		penColor = c;
+		penColor = col;
 
 		//ペンサイズの取得
 		penStr = s;
 	}
-
-
 }
