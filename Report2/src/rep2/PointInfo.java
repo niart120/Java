@@ -1,8 +1,8 @@
 package rep2;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.Stroke;
 
 class PointInfo {
 
@@ -12,7 +12,7 @@ class PointInfo {
 	private Point dest;
 
 	private final Color penColor;
-	private final Stroke penStr;
+	private final BasicStroke penStr;
 
 	//直線の式ax+by+c=0の各定数
 	//ラジアン(傾き)
@@ -22,7 +22,7 @@ class PointInfo {
 	//切片
 	private double c;
 
-	PointInfo(Point p, double deg, double length, Color col, Stroke s){
+	PointInfo(Point p, double deg, double length, Color col, BasicStroke bs){
 		//現在座標の初期化
 		bgn = new Point(p);
 
@@ -44,7 +44,14 @@ class PointInfo {
 		penColor = col;
 
 		//ペンサイズの取得
-		penStr = s;
+		penStr = bs;
+	}
+
+	//経路中に点が含まれるかの判定
+	boolean isInPoint(int x,int y) {
+
+
+		return true;
 	}
 
 	//getter
@@ -60,7 +67,7 @@ class PointInfo {
 		return penColor;
 	}
 
-	Stroke getPenStr() {
+	BasicStroke getPenStr() {
 		return penStr;
 	}
 }
