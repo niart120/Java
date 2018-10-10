@@ -1,11 +1,14 @@
 package rep2;
 
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-public class TurtleGraphicsPanel extends JPanel {
+public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseMotionListener{
 	//Turtle インスタンス
 	private Turtle kame;
 	
@@ -70,5 +73,42 @@ public class TurtleGraphicsPanel extends JPanel {
 		for(Turtle t: turtles) {
 			t.paint(g);
 		}
+	}
+
+	@Override
+	public void mouseDragged(MouseEvent arg0) {
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent arg0) {
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO 自動生成されたメソッド・スタブ
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO 自動生成されたメソッド・スタブ
+		
 	}
 }
