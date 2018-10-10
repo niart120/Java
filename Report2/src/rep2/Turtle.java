@@ -13,19 +13,23 @@ public class Turtle {
 	Point presPos = new Point(0,0);
 	//向き
 	double angle = 0.0;
+	//オフセット位置
+	private int offsetX = 0;
+	private int offsetY = 0;
+
 	//ペンの色
 	Color penColor = Color.black;
 	//ペンサイズ
 	BasicStroke penSize = new BasicStroke(1);
-	
+
 	//経路
-	ArrayList<Section> paths = new ArrayList<Section>(); 
-	
+	ArrayList<Section> paths = new ArrayList<Section>();
+
 	//コンストラクタ
 	Turtle(int x, int y){
 		presPos.move(x,y);
 	}
-	
+
 	//移動
 	void move(double length) {
 		//区間を生成
@@ -35,23 +39,29 @@ public class Turtle {
 		//現在位置更新
 		presPos = new Point(sec.getDest());
 	}
-	
+
 	//方向転換
 	void turn(double deg) {
 		//角度変更(反時計回りを負に)
 		angle -= deg;
 	}
-	
+
 	//ペン色設定
 	void setPenColor(Color c) {
 		this.penColor = c;
 	}
-	
+
 	//ペンサイズ設定
 	void setPenSize(int size) {
 		penSize = new BasicStroke(size);
 	}
-	
+
+	//オフセット設定
+	void setOffset(Point p) {
+		offsetX += p.x;
+		offsetY += p.y;
+	}
+
 	//描画処理
 	void paint(Graphics g) {
 		//gをGraphics2Dでキャスト
@@ -59,9 +69,16 @@ public class Turtle {
 		for(Section sec: paths) {
 			g2d.setColor(sec.getPenColor());
 			g2d.setStroke(sec.getPenStr());
-			g2d.drawLine(sec.getBgn().x, sec.getBgn().y, sec.getDest().x, sec.getDest().y);
+
+			//オフセット値補正
+			int x1 = sec.getBgn().x + offsetX;
+			int y1 = sec.getBgn().y + offsetY;
+			int x2 = sec.getDest().x + offsetX;
+			int y2 = sec.getDest().y + offsetY;
+
+			g2d.drawLine(x1, y1, x2, y2);
 		}
 	}
-	
-	
+
+
 }
