@@ -15,7 +15,7 @@ public class TurtleGraphicsPanel extends JPanel {
 	//コンストラクタ
 	TurtleGraphicsPanel(){
 		kame = new Turtle(200,200);
-		triangles(kame,40,2,10);
+		triangles(kame,40,2,20);
 		turtles.add(kame);
 	}
 	
