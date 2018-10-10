@@ -1,5 +1,6 @@
 package rep2;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseMotionListener{
 	//Turtle インスタンス
 	private Turtle kame;
+	private Turtle coco;
 
 	//クリック時の座標保持
 	private int pressedX;
@@ -29,8 +31,13 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 		addMouseListener(this);
 
 		kame = new Turtle(200,200);
+		coco = new Turtle(200,200);
+
 		regPolygons(kame,40,15);
+		drawSomething(coco,2,50);
 		turtles.add(kame);
+		turtles.add(coco);
+
 	}
 
 	//Turtleに正方形を描かせる
@@ -76,6 +83,19 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 			for(int i=0;i<n;i++) {
 				regPolygon(t,size,i+2);
 			}
+		}
+	}
+
+	//自由描画
+	void drawSomething(Turtle t,int size, int n) {
+		double gr = (1.0+Math.sqrt(5))/2.0;
+		double dgr = 360.0 / 5.0;
+		for(int i=0;i<n;i++) {
+			Color col = new Color(255*i/n,255*i/n,255*i/n);
+			t.setPenColor(col);
+			t.setPenSize(i/2+1);
+			t.move(size*gr*i);
+			t.turn(dgr);
 		}
 	}
 
