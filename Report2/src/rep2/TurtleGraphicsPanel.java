@@ -55,6 +55,15 @@ public class TurtleGraphicsPanel extends JPanel {
 			t.turn(dgr);
 		}
 	}
+	
+	//Turtleにn個の正(n+2)角形を描かせる
+	void regPolygons(Turtle t, int size, int n) {
+		if(3<=n) {
+			for(int i=0;i<n;i++) {
+				regPolygon(t,size,i+2);
+			}
+		}
+	}
 
 	@Override
 	public void paintComponent(Graphics g) {
