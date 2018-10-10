@@ -15,7 +15,7 @@ public class TurtleGraphicsPanel extends JPanel {
 	//コンストラクタ
 	TurtleGraphicsPanel(){
 		kame = new Turtle(200,200);
-		square(kame);
+		triangles(kame,40,2,10);
 		turtles.add(kame);
 	}
 	
@@ -27,6 +27,22 @@ public class TurtleGraphicsPanel extends JPanel {
 		}
 	}
 	
+	void triangle(Turtle t, int size) {
+		t.move(size);
+		t.turn(120);
+		t.move(size);
+		t.turn(120);
+		t.move(size);
+		t.turn(120);
+	}
+
+	void triangles(Turtle t, int n, int c, int d) {
+		for (int i = 0; i++ < n; ) {
+			triangle(t, i * c);
+			t.turn(d);
+		}
+	}
+
 	@Override
 	public void paintComponent(Graphics g) {
 		for(Turtle t: turtles) {
