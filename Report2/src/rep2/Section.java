@@ -52,20 +52,24 @@ class Section {
 		//ペンの幅(半径)
 		double r = penStr.getLineWidth()/2+1.0;
 		//xが経路の変域(x)に含まれるか(1)
-		boolean isInDomain = (bgn.x-r<=x&&x<=dest.x+r)||(dest.x-r<=x&&x<=bgn.x);
+		boolean isInDomain = (bgn.x-r<=x&&x<=dest.x+r)||(dest.x-r<=x&&x<=bgn.x+r);
 		//点と経路の距離d(点と直線の式より算出)
 		double d = Math.abs(a*x+b*y+c)/Math.hypot(a, b);
 		//距離が半径r以内であるか(2)
 		boolean isInRadius = (d<=r);
 
+		System.out.println(d);
 		//(1)かつ(2)を満たすならtrue
 		return isInDomain&&isInRadius;
 	}
 
-	//ドラッグ距離に応じた経路変更
-	void applyOffset(int dx, int dy) {
+	//ドラッグ処理後の再計算
+	void recalcSection(int dx, int dy) {
+		//経路の再計算
 		bgn.translate(dx, dy);
 		dest.translate(dx, dy);
+		//切片の再計算
+		c = bgn.y - a * bgn.x;
 	}
 
 	//getter
