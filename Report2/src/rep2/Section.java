@@ -4,7 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Point;
 
-class PointInfo {
+class Section {
 
 	//現在座標
 	private Point bgn;
@@ -22,7 +22,7 @@ class PointInfo {
 	//切片
 	private double c;
 
-	PointInfo(Point p, double deg, double length, Color col, BasicStroke bs){
+	Section(Point p, double deg, double length, Color col, BasicStroke bs){
 		//現在座標の初期化
 		bgn = new Point(p);
 
