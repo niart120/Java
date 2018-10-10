@@ -62,6 +62,13 @@ public class Turtle {
 		offsetY = dy;
 	}
 
+	//経路更新(オフセット値の適用)
+	void updatePaths() {
+		for(Section sec: paths) {
+			sec.applyOffset(offsetX, offsetY);
+		}
+	}
+
 	//描画処理
 	void paint(Graphics g) {
 		//gをGraphics2Dでキャスト
