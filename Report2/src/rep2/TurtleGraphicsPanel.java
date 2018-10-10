@@ -15,7 +15,7 @@ public class TurtleGraphicsPanel extends JPanel {
 	//コンストラクタ
 	TurtleGraphicsPanel(){
 		kame = new Turtle(200,200);
-		triangles(kame,40,2,20);
+		regPolygons(kame,40,15);
 		turtles.add(kame);
 	}
 	
@@ -27,6 +27,7 @@ public class TurtleGraphicsPanel extends JPanel {
 		}
 	}
 	
+	//Turtleに正三角形を描かせる
 	void triangle(Turtle t, int size) {
 		t.move(size);
 		t.turn(120);
@@ -36,10 +37,31 @@ public class TurtleGraphicsPanel extends JPanel {
 		t.turn(120);
 	}
 
+	//Turtleにサイズを変えて正三角形群を描かせる
 	void triangles(Turtle t, int n, int c, int d) {
 		for (int i = 0; i++ < n; ) {
 			triangle(t, i * c);
 			t.turn(d);
+		}
+	}
+	
+	//Turtleに正多角形を描かせる
+	void regPolygon(Turtle t, int size, int n) {
+		//外角計算
+		double dgr = 360/n;
+		//描画命令
+		for(int i=0; i<n; i++) {
+			t.move(size);
+			t.turn(dgr);
+		}
+	}
+	
+	//Turtleにn個の正(n+2)角形を描かせる
+	void regPolygons(Turtle t, int size, int n) {
+		if(3<=n) {
+			for(int i=0;i<n;i++) {
+				regPolygon(t,size,i+2);
+			}
 		}
 	}
 
