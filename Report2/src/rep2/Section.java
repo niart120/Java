@@ -62,6 +62,12 @@ class Section {
 		return isInDomain&&isInRadius;
 	}
 
+	//ドラッグ距離に応じた経路変更
+	void applyOffset(int dx, int dy) {
+		bgn.translate(dx, dy);
+		dest.translate(dx, dy);
+	}
+
 	//getter
 	Point getBgn() {
 		return bgn;
