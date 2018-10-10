@@ -68,6 +68,8 @@ class Section {
 		//経路の再計算
 		bgn.translate(dx, dy);
 		dest.translate(dx, dy);
+		//切片の再計算
+		c = bgn.y - a * bgn.x;
 	}
 
 	//getter
