@@ -21,8 +21,10 @@ public class TurtleGraphicsPanel extends JPanel {
 	
 	//Turtleに正方形を描かせる
 	void square(Turtle t) {
-		t.move(50);
-		t.turn(90);
+		for(int i=0;i<4;i++) {
+			t.move(50);
+			t.turn(90);
+		}
 	}
 	
 	@Override
