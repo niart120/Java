@@ -58,8 +58,8 @@ public class Turtle {
 
 	//オフセット設定
 	void setOffset(int dx,int dy) {
-		offsetX += dx;
-		offsetY += dy;
+		offsetX = dx;
+		offsetY = dy;
 	}
 
 	//描画処理
