@@ -48,7 +48,7 @@ public class TurtleGraphicsPanel extends JPanel {
 	//Turtleに正多角形を描かせる
 	void regPolygon(Turtle t, int size, int n) {
 		//外角計算
-		double dgr = 360/n;
+		double dgr = 360.0/n;
 		//描画命令
 		for(int i=0; i<n; i++) {
 			t.move(size);
