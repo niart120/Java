@@ -96,10 +96,6 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 			//オフセット値の更新
 			turtles.get(selectedTurtle).setOffset(dx,dy);
 
-			//マウス位置の更新
-			pressedX = dx;
-			pressedY = dy;
-
 			//再描画
 			repaint();
 		}
