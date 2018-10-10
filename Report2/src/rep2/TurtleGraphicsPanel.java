@@ -24,6 +24,10 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 
 	//コンストラクタ
 	TurtleGraphicsPanel(){
+		//イベントリスナーの設定
+		addMouseMotionListener(this);
+		addMouseListener(this);
+
 		kame = new Turtle(200,200);
 		regPolygons(kame,40,15);
 		turtles.add(kame);
@@ -95,6 +99,9 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 			//マウス位置の更新
 			pressedX = dx;
 			pressedY = dy;
+
+			//再描画
+			repaint();
 		}
 	}
 
@@ -127,6 +134,7 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 					selectedTurtle = i;
 					pressedX = arg0.getX();
 					pressedY = arg0.getY();
+					repaint();
 					return;
 				}
 			}
