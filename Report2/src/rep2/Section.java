@@ -52,7 +52,7 @@ class Section {
 		//ペンの幅(半径)
 		double r = penStr.getLineWidth()/2+1.0;
 		//xが経路の変域(x)に含まれるか(1)
-		boolean isInDomain = (bgn.x-r<=x)&&(x<=dest.x+r);
+		boolean isInDomain = (bgn.x-r<=x&&x<=dest.x+r)||(dest.x-r<=x&&x<=bgn.x);
 		//点と経路の距離d(点と直線の式より算出)
 		double d = Math.abs(a*x+b*y+c)/Math.hypot(a, b);
 		//距離が半径r以内であるか(2)
