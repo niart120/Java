@@ -3,6 +3,7 @@ package rep2;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -53,7 +54,13 @@ public class Turtle {
 	
 	//描画処理
 	void paint(Graphics g) {
-		
+		//gをGraphics2Dでキャスト
+		Graphics2D g2d = (Graphics2D)(g);
+		for(Section sec: paths) {
+			g2d.setColor(sec.getPenColor());
+			g2d.setStroke(sec.getPenStr());
+			g2d.drawLine(sec.getBgn().x, sec.getBgn().y, sec.getDest().x, sec.getDest().y);
+		}
 	}
 	
 	
