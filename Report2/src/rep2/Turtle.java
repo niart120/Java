@@ -48,7 +48,7 @@ public class Turtle {
 	
 	//ペンサイズ設定
 	void setPenSize(int size) {
-		
+		penSize = new BasicStroke(size);
 	}
 	
 	//描画処理
