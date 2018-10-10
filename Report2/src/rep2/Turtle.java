@@ -37,7 +37,8 @@ public class Turtle {
 	
 	//方向転換
 	void turn(double deg) {
-		
+		//角度変更(反時計回りを負に)
+		angle -= deg;
 	}
 	
 	//ペン色設定
