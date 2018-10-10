@@ -144,7 +144,7 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		//クリック判定は描画の逆順
-		for(int i=turtles.size();0<=i;i--) {
+		for(int i=turtles.size()-1;0<=i;i--) {
 			for(Section sec: turtles.get(i).paths) {
 				//経路にマウス座標が含まれていればそのTurtleを選択
 				if(sec.isInPoint(arg0.getX(), arg0.getY())) {
