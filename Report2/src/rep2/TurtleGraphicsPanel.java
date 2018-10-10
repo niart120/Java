@@ -12,6 +12,10 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 	//Turtle インスタンス
 	private Turtle kame;
 	
+	//クリック時の座標保持
+	private int pressedx;
+	private int pressedy;
+	
 	//Turtle保持用のArrayList
 	private ArrayList<Turtle> turtles = new ArrayList<Turtle>();
 	
@@ -102,13 +106,11 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO 自動生成されたメソッド・スタブ
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO 自動生成されたメソッド・スタブ
 		
 	}
 }
