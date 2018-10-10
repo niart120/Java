@@ -43,7 +43,7 @@ public class Turtle {
 	
 	//ペン色設定
 	void setPenColor(Color c) {
-		
+		this.penColor = c;
 	}
 	
 	//ペンサイズ設定
