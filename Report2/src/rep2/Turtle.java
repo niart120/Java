@@ -18,7 +18,7 @@ public class Turtle {
 	BasicStroke penSize = new BasicStroke(1);
 	
 	//経路
-	ArrayList<Section> Paths = new ArrayList<Section>(); 
+	ArrayList<Section> paths = new ArrayList<Section>(); 
 	
 	//コンストラクタ
 	Turtle(int x, int y){
