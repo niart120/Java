@@ -58,7 +58,6 @@ class Section {
 		//距離が半径r以内であるか(2)
 		boolean isInRadius = (d<=r);
 
-		System.out.println(d);
 		//(1)かつ(2)を満たすならtrue
 		return isInDomain&&isInRadius;
 	}
