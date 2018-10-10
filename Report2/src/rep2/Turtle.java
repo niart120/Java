@@ -27,7 +27,12 @@ public class Turtle {
 	
 	//移動
 	void move(double length) {
-		
+		//区間を生成
+		Section sec = new Section(presPos, angle, length, penColor, penSize);
+		//経路に区間を追加
+		paths.add(sec);
+		//現在位置更新
+		presPos = new Point(sec.getDest());
 	}
 	
 	//方向転換
