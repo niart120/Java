@@ -65,7 +65,7 @@ public class Turtle {
 	//経路更新(オフセット値の適用)
 	void updatePaths() {
 		for(Section sec: paths) {
-			sec.applyOffset(offsetX, offsetY);
+			sec.recalcSection(offsetX, offsetY);
 		}
 	}
 
