@@ -86,6 +86,65 @@ public class Turtle {
 			g2d.drawLine(x1, y1, x2, y2);
 		}
 	}
+	
+	//Turtleに正方形を描かせる
+	void square(Turtle t) {
+		for(int i=0;i<4;i++) {
+			t.move(50);
+			t.turn(90);
+		}
+	}
+
+	//Turtleに正三角形を描かせる
+	void triangle(int size) {
+		move(size);
+		turn(120);
+		move(size);
+		turn(120);
+		move(size);
+		turn(120);
+	}
+
+	//Turtleにサイズを変えて正三角形群を描かせる
+	void triangles(int n, int c, int d) {
+		for (int i = 0; i++ < n; ) {
+			triangle(i * c);
+			turn(d);
+		}
+	}
+
+	//Turtleに正多角形を描かせる
+	void regPolygon(int size, int n) {
+		//外角計算
+		double dgr = 360.0/n;
+		//描画命令
+		for(int i=0; i<n; i++) {
+			move(size);
+			turn(dgr);
+		}
+	}
+
+	//Turtleにn個の正(n+2)角形を描かせる
+	void regPolygons(int size, int n) {
+		if(3<=n) {
+			for(int i=0;i<n;i++) {
+				regPolygon(size,i+2);
+			}
+		}
+	}
+
+	//自由描画
+	void drawSomething(int size, int n) {
+		double gr = (1.0+Math.sqrt(5))/2.0;
+		double dgr = 360.0 / 5.0;
+		for(int i=0;i<n;i++) {
+			Color col = new Color(255*i/n,255*i/n,255*i/n);
+			setPenColor(col);
+			setPenSize(i/2+1);
+			move(size*gr*i);
+			turn(dgr);
+		}
+	}
 
 
 }

@@ -30,73 +30,14 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 		addMouseMotionListener(this);
 		addMouseListener(this);
 
-		kame = new Turtle(200,200);
+		kame = new Turtle(150,300);
 		coco = new Turtle(200,200);
 
-		regPolygons(kame,40,15);
-		drawSomething(coco,2,50);
+		kame.regPolygons(100,15);
+		coco.drawSomething(2,50);
 		turtles.add(kame);
 		turtles.add(coco);
 
-	}
-
-	//Turtleに正方形を描かせる
-	void square(Turtle t) {
-		for(int i=0;i<4;i++) {
-			t.move(50);
-			t.turn(90);
-		}
-	}
-
-	//Turtleに正三角形を描かせる
-	void triangle(Turtle t, int size) {
-		t.move(size);
-		t.turn(120);
-		t.move(size);
-		t.turn(120);
-		t.move(size);
-		t.turn(120);
-	}
-
-	//Turtleにサイズを変えて正三角形群を描かせる
-	void triangles(Turtle t, int n, int c, int d) {
-		for (int i = 0; i++ < n; ) {
-			triangle(t, i * c);
-			t.turn(d);
-		}
-	}
-
-	//Turtleに正多角形を描かせる
-	void regPolygon(Turtle t, int size, int n) {
-		//外角計算
-		double dgr = 360.0/n;
-		//描画命令
-		for(int i=0; i<n; i++) {
-			t.move(size);
-			t.turn(dgr);
-		}
-	}
-
-	//Turtleにn個の正(n+2)角形を描かせる
-	void regPolygons(Turtle t, int size, int n) {
-		if(3<=n) {
-			for(int i=0;i<n;i++) {
-				regPolygon(t,size,i+2);
-			}
-		}
-	}
-
-	//自由描画
-	void drawSomething(Turtle t,int size, int n) {
-		double gr = (1.0+Math.sqrt(5))/2.0;
-		double dgr = 360.0 / 5.0;
-		for(int i=0;i<n;i++) {
-			Color col = new Color(255*i/n,255*i/n,255*i/n);
-			t.setPenColor(col);
-			t.setPenSize(i/2+1);
-			t.move(size*gr*i);
-			t.turn(dgr);
-		}
 	}
 
 	@Override
