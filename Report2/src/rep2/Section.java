@@ -49,17 +49,22 @@ class Section {
 
 	//経路中に点が含まれるかの判定
 	boolean isInPoint(int x,int y) {
+		//線が描画されていないならfalse
+		if(penStr.getLineWidth()==0.0) {
+			return false;
+		}
 		//ペンの幅(半径)
 		double r = penStr.getLineWidth()/2+1.0;
-		//xが経路の変域(x)に含まれるか(1)
-		boolean isInDomain = (bgn.x-r<=x&&x<=dest.x+r)||(dest.x-r<=x&&x<=bgn.x+r);
+		//x,yが経路の変域に含まれるか(1)
+		boolean isInDomainX = (bgn.x-r<=x&&x<=dest.x+r)||(dest.x-r<=x&&x<=bgn.x+r);
+		boolean isInDomainY = (bgn.y-r<=y&&y<=dest.y+r)||(dest.y-r<=y&&y<=bgn.y+r);
 		//点と経路の距離d(点と直線の式より算出)
 		double d = Math.abs(a*x+b*y+c)/Math.hypot(a, b);
 		//距離が半径r以内であるか(2)
 		boolean isInRadius = (d<=r);
 
 		//(1)かつ(2)を満たすならtrue
-		return isInDomain&&isInRadius;
+		return isInDomainX&&isInDomainY&&isInRadius;
 	}
 
 	//ドラッグ処理後の再計算
