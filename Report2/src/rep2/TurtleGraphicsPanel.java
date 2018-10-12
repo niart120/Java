@@ -147,7 +147,9 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 			turtles.get(selectedTurtle).updatePaths();
 			//オフセット値のリセット
 			turtles.get(selectedTurtle).setOffset(0, 0);
-
+			//選択解除
+			selectedTurtle = -1;
+			
 			repaint();
 		}
 	}
