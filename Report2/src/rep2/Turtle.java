@@ -4,13 +4,12 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.util.ArrayList;
 
 public class Turtle {
 
 	//現在位置
-	Point presPos = new Point(0,0);
+	PointDouble presPos = new PointDouble(0,0);
 	//向き
 	double angle = 0.0;
 	//オフセット位置
@@ -37,7 +36,7 @@ public class Turtle {
 		//経路に区間を追加
 		paths.add(sec);
 		//現在位置更新
-		presPos = new Point(sec.getDest());
+		presPos = new PointDouble(sec.getDest());
 	}
 
 	//方向転換
@@ -78,10 +77,10 @@ public class Turtle {
 			g2d.setStroke(sec.getPenStr());
 
 			//オフセット値補正
-			int x1 = sec.getBgn().x + offsetX;
-			int y1 = sec.getBgn().y + offsetY;
-			int x2 = sec.getDest().x + offsetX;
-			int y2 = sec.getDest().y + offsetY;
+			int x1 = sec.getBgn().getX() + offsetX;
+			int y1 = sec.getBgn().getY() + offsetY;
+			int x2 = sec.getDest().getX() + offsetX;
+			int y2 = sec.getDest().getY() + offsetY;
 
 			g2d.drawLine(x1, y1, x2, y2);
 		}

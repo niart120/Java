@@ -2,43 +2,42 @@ package rep2;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Point;
 
 class Section {
 
 	//現在座標
-	private Point bgn;
+	private PointDouble bgn;
 	//目的座標
-	private Point dest;
+	private PointDouble dest;
 
 	private final Color penColor;
 	private final BasicStroke penStr;
 
 	//直線の式ax+by+c=0の各定数
-	//ラジアン(傾き)
+	//tan(傾き)
 	private double a;
 	//定数
 	private final double b = -1;
 	//切片
 	private double c;
 
-	Section(Point p, double deg, double length, Color col, BasicStroke bs){
+	Section(PointDouble presPos, double deg, double length, Color col, BasicStroke bs){
 		//現在座標の初期化
-		bgn = new Point(p);
+		bgn = new PointDouble(presPos);
 
 		//degree -> radian
 		double rad = Math.toRadians(deg);
 
 		//移動距離
-		int dx = (int)(Math.cos(rad)*length);
-		int dy = (int)(Math.sin(rad)*length);
+		double dx = Math.cos(rad)*length;
+		double dy = Math.sin(rad)*length;
 
 		//目的座標の初期化
-		dest = new Point(p.x+dx,p.y+dy);
+		dest = new PointDouble(presPos.x+dx,presPos.y+dy);
 
 		//a,cの初期化
 		a = Math.tan(rad);
-		c = p.y - a*p.x;
+		c = presPos.y - a*presPos.x;
 
 		//ペンカラーの取得
 		penColor = col;
@@ -77,11 +76,11 @@ class Section {
 	}
 
 	//getter
-	Point getBgn() {
+	PointDouble getBgn() {
 		return bgn;
 	}
 
-	Point getDest() {
+	PointDouble getDest() {
 		return dest;
 	}
 
