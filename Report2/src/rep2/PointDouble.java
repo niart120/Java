@@ -27,17 +27,16 @@ class PointDouble {
 		this.y = y;
 	}
 	
+	public void translate(int dx,int dy) {
+		this.x += dx;
+		this.y += dy;
+	}
+	
 	public int getX() {
 		return (int) Math.round(x);
 	}
 	
 	public int getY() {
 		return (int) Math.round(y);
-	}
-	
-	
-	public void translate(int dx,int dy) {
-		this.x += dx;
-		this.y += dy;
 	}
 }
