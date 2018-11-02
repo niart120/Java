@@ -31,12 +31,10 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 		addMouseListener(this);
 
 		kame = new Turtle(150,300);
-		coco = new Turtle(200,200);
+		
 
-		kame.regPolygons(100,15);
-		coco.drawSomething(2,50);
+		kame.star(100,5);
 		turtles.add(kame);
-		turtles.add(coco);
 
 	}
 
@@ -86,15 +84,12 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 	public void mousePressed(MouseEvent arg0) {
 		//クリック判定は描画の逆順
 		for(int i=turtles.size()-1;0<=i;i--) {
-			for(Section sec: turtles.get(i).paths) {
-				//経路にマウス座標が含まれていればそのTurtleを選択
-				if(sec.isInPoint(arg0.getX(), arg0.getY())) {
-					selectedTurtle = i;
-					pressedX = arg0.getX();
-					pressedY = arg0.getY();
-					repaint();
-					return;
-				}
+			//経路にマウス座標が含まれていればそのTurtleを選択
+			if(turtles.get(i).isClicked(arg0.getX(), arg0.getY())) {
+				selectedTurtle = i;
+				pressedX = arg0.getX();
+				pressedY = arg0.getY();
+				return;
 			}
 		}
 		//上記の処理を抜けたならば未選択として処理
