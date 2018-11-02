@@ -53,7 +53,7 @@ class Section {
 			return false;
 		}
 		//ペンの幅(半径)
-		double r = penStr.getLineWidth()/2+1.0;
+		double r = penStr.getLineWidth()/2+2.0;
 		//x,yが経路の変域に含まれるか(1)
 		boolean isInDomainX = (bgn.x-r<=x&&x<=dest.x+r)||(dest.x-r<=x&&x<=bgn.x+r);
 		boolean isInDomainY = (bgn.y-r<=y&&y<=dest.y+r)||(dest.y-r<=y&&y<=bgn.y+r);
