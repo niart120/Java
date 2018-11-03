@@ -138,6 +138,14 @@ public class ListBase {
 		return null;	//if文を抜けたなら強制的にnullを返す
 	}
 
+	void swapContents(Cell c1, Cell c2) {
+		if(c1 != null && c2 != null) {
+			Object temp = c1.data;
+			c1.data = c2.data;
+			c2.data = temp;
+		}
+	}
+
 	void printList() {//内部のリストの全表示
 		Cell curr = header.next;
 		while (curr != null) {
