@@ -171,6 +171,11 @@ public class ListBase {
 		}
 	}
 
+	//リストの反転
+	void reverse() {
+
+	}
+
 	void printList() {//内部のリストの全表示
 		Cell curr = header.next;
 		while (curr != null) {
