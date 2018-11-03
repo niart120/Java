@@ -11,17 +11,7 @@ public class ListBase {
 		header.next = sentinel;
 	}
 
-	void add(Cell c) {//リストの末尾にcellを追加
-		Cell curr = header.next;
-		while (curr.next != sentinel) {
-			curr = curr.next;
-		}
-
-		curr.next = c;
-		c.next = sentinel;//末尾の番兵を更新
-	}
-
-	void makeList() {
+	void makeList() {//データの生成
 		int[] tempList = new int[dataNum];
 
 		for(int i=0;i<dataNum;i++) {
@@ -42,6 +32,16 @@ public class ListBase {
 		for(int i=0; i<dataNum; i++) {
 			insertTop(new Cell(new Integer(tempList[i])));
 		}
+	}
+
+	void add(Cell c) {//リストの末尾にcellを追加
+		Cell curr = header.next;
+		while (curr.next != sentinel) {
+			curr = curr.next;
+		}
+
+		curr.next = c;
+		c.next = sentinel;//末尾の番兵を更新
 	}
 
 	boolean isInList(String s) {//文字列sを持つcellの探査)
@@ -188,13 +188,20 @@ public class ListBase {
 	static ListBase concat(ListBase lb1, ListBase lb2) {
 		ListBase concat = new ListBase(lb1.dataNum+lb2.dataNum);
 		Cell curr = lb1.header.next;
+		Cell temp;
 		while(curr != lb1.sentinel) {
+			temp = curr.next;//次の処理でcurr.nextが変化するため保持
 			concat.insertTop(curr);
+			curr = temp;//保持しておいた参照値を代入
 		}
-		curr = lb2.header;
+
+		curr = lb2.header.next;
 		while(curr != lb2.sentinel) {
-			concat.insertTop(curr);
+			temp = curr.next;//次の処理でcurr.nextが変化するため保持
+			concat.insertTop(curr);//currを追加
+			curr = temp;//保持しておいた参照値を代入
 		}
+
 		concat.reverse();
 		return concat;
 	}
