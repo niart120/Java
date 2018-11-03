@@ -55,8 +55,10 @@ public class ListBase {
 	}
 
 	void insertTop(Cell c) {//リストの先頭にcellを追加
-		c.next = header.next;//与えられたcellの次のcellを先頭のcellに
-		header.next = c;
+		if(header.next != c) {
+			c.next = header.next;//与えられたcellの次のcellを先頭のcellに
+			header.next = c;
+		}
 	}
 
 	void insertAfter(String s, Cell c) {//文字列sを持つcellの後に新たなcellであるcを追加)
@@ -86,6 +88,7 @@ public class ListBase {
 		}
 	}
 
+	//指定された文字列を含むcellを削除
 	void remove(String s) {
 		Cell curr = header.next;
 		Cell prev = header;
@@ -173,7 +176,27 @@ public class ListBase {
 
 	//リストの反転
 	void reverse() {
+		Cell curr = header.next;
+		while(curr != sentinel) {
+			Cell temp = curr.next; //次の処理でcurrが変化するため保持
+			insertTop(curr);
+			curr = temp;
+		}
+	}
 
+	//リストの結合
+	ListBase concat(ListBase lb1, ListBase lb2) {
+		ListBase concat = new ListBase(lb1.dataNum+lb2.dataNum);
+		Cell curr = lb1.header.next;
+		while(curr != lb1.sentinel) {
+			concat.insertTop(curr);
+		}
+		curr = lb2.header;
+		while(curr != lb2.sentinel) {
+			concat.insertTop(curr);
+		}
+		concat.reverse();
+		return concat;
 	}
 
 	void printList() {//内部のリストの全表示
