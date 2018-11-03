@@ -185,7 +185,7 @@ public class ListBase {
 	}
 
 	//リストの結合
-	ListBase concat(ListBase lb1, ListBase lb2) {
+	static ListBase concat(ListBase lb1, ListBase lb2) {
 		ListBase concat = new ListBase(lb1.dataNum+lb2.dataNum);
 		Cell curr = lb1.header.next;
 		while(curr != lb1.sentinel) {
