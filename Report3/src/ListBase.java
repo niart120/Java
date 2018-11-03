@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class ListBase {
 	Cell header = new Cell("HEADER");//ヘッダーリスト
 	Cell sentinel = new Cell("");//番兵リスト
@@ -17,6 +19,29 @@ public class ListBase {
 
 		curr.next = c;
 		c.next = sentinel;//末尾の番兵を更新
+	}
+
+	void makeList() {
+		int[] tempList = new int[dataNum];
+
+		for(int i=0;i<dataNum;i++) {
+			tempList[i] = i;
+		}
+
+		//シャッフル
+		for(int i=0;i<dataNum-1;i++){
+			Random rnd = new Random();
+			int offset = rnd.nextInt(dataNum-i);
+			int temp = tempList[i];
+
+			tempList[i] = tempList[i+offset];
+			tempList[i+offset] = temp;
+		}
+
+		//格納
+		for(int i=0; i<dataNum; i++) {
+			insertTop(new Cell(new Integer(tempList[i])));
+		}
 	}
 
 	boolean isInList(String s) {//文字列sを持つcellの探査)
