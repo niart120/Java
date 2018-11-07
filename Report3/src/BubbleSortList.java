@@ -7,9 +7,10 @@ public class BubbleSortList extends ListBase {
 
 	void bubbleSort() {
 		if(dataNum<=1) return;
-		boolean isContinue = false;
+		boolean isContinue;
 		Cell curr = header.next;
 		do{
+			isContinue = false;
 			while(curr.next != sentinel) {
 				int a = (Integer)curr.data;
 				int b = (Integer)curr.next.data;

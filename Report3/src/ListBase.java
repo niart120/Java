@@ -176,29 +176,30 @@ public class ListBase {
 
 	//リストの反転
 	void reverse() {
-		Cell curr = header.next;
+		Cell first = header.next;
+		Cell curr = first;
 		while(curr != sentinel) {
 			Cell temp = curr.next; //次の処理でcurrが変化するため保持
 			insertTop(curr);
 			curr = temp;
 		}
+		first.next = sentinel;
 	}
 
 	//リストの結合
 	static ListBase concat(ListBase lb1, ListBase lb2) {
 		ListBase concat = new ListBase(lb1.dataNum+lb2.dataNum);
 		Cell curr = lb1.header.next;
-		Cell temp;
 		while(curr != lb1.sentinel) {
-			temp = curr.next;//次の処理でcurr.nextが変化するため保持
-			concat.insertTop(curr);
+			Cell temp = curr.next;//次の処理でcurr.nextが変化するため保持
+			concat.insertTop(new Cell(temp.data));
 			curr = temp;//保持しておいた参照値を代入
 		}
 
 		curr = lb2.header.next;
 		while(curr != lb2.sentinel) {
-			temp = curr.next;//次の処理でcurr.nextが変化するため保持
-			concat.insertTop(curr);//currを追加
+			Cell temp = curr.next;//次の処理でcurr.nextが変化するため保持
+			concat.insertTop(new Cell(temp.data));//currを追加
 			curr = temp;//保持しておいた参照値を代入
 		}
 

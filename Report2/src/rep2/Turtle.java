@@ -23,7 +23,7 @@ public class Turtle {
 
 	//経路
 	ArrayList<Section> paths = new ArrayList<Section>();
-	
+
 	//コンストラクタ
 	Turtle(int x, int y){
 		presPos.move(x,y);
@@ -67,7 +67,7 @@ public class Turtle {
 			sec.recalcSection(offsetX, offsetY);
 		}
 	}
-	
+
 	//クリック判定
 	boolean isClicked(int x,int y) {
 		for(Section sec :paths) {
@@ -82,10 +82,12 @@ public class Turtle {
 	void paint(Graphics g) {
 		//gをGraphics2Dでキャスト
 		Graphics2D g2d = (Graphics2D)(g);
-		
+
 		for(Section sec: paths) {
 			g2d.setColor(sec.getPenColor());
 			g2d.setStroke(sec.getPenStr());
+
+			if(sec.getPenStr().getLineWidth()==0) return;
 
 			//オフセット値補正
 			int x1 = sec.getBgn().getX() + offsetX;
@@ -95,9 +97,9 @@ public class Turtle {
 
 			g2d.drawLine(x1, y1, x2, y2);
 		}
-		
+
 	}
-	
+
 	//Turtleに正方形を描かせる
 	void square() {
 		for(int i=0;i<4;i++) {
@@ -143,7 +145,7 @@ public class Turtle {
 			}
 		}
 	}
-	
+
 	//自由描画
 	void drawSomething(int size, int n) {
 		double gr = (1.0+Math.sqrt(5))/2.0;

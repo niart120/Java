@@ -1,6 +1,5 @@
 package rep2;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -31,9 +30,8 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 		addMouseListener(this);
 
 		kame = new Turtle(150,300);
-		
 
-		kame.star(100,5);
+		kame.triangles(5, 10, 10);
 		turtles.add(kame);
 
 	}
@@ -105,7 +103,7 @@ public class TurtleGraphicsPanel extends JPanel implements MouseListener, MouseM
 			turtles.get(selectedTurtle).setOffset(0, 0);
 			//選択解除
 			selectedTurtle = -1;
-			
+
 			repaint();
 		}
 	}
